@@ -1,0 +1,24 @@
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgb(13, 141, 150);
+  padding: 10px 30px 10px 30px;
+}
+
+.nav img {
+  height: 5.2rem;
+}
+
+.nav ul {
+  display: flex;
+  column-gap: 20px;
+  list-style: none;
+  text-decoration: none;
+}
+
+.nav a {
+  text-decoration: none;
+  color: white;
+  font-family: sans-serif;
+}
