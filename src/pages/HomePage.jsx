@@ -1,12 +1,13 @@
-import React from "react";
-import { Outlet } from "react-router-dom";
-import PageNav from "../components/PageNav";
+import { Outlet } from 'react-router-dom';
+import PageNav from '../components/PageNav';
 
 const HomePage = () => {
   return (
     <main>
       <PageNav />
-      <Outlet />
+      <div className="px-10">
+        <Outlet />
+      </div>
     </main>
   );
 };

@@ -1,18 +1,19 @@
-import React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import HomePage from "./pages/HomePage";
-import PeoplePage from "./pages/People";
-import TripsPage from "./pages/Trips";
-import TripDetailPage from "./pages/TripDetail";
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import HomePage from './pages/HomePage';
+import People from './pages/People';
+import Trips from './pages/Trips';
+import TripDetail from './pages/TripDetail';
+import Home from './components/Home';
 
 const App = () => {
   return (
     <Router>
       <Routes>
         <Route path="/" element={<HomePage />}>
-          <Route path="people" element={<PeoplePage />} />
-          <Route path="trips" element={<TripsPage />} />
-          <Route path="trips/:tripId" element={<TripDetailPage />} />
+          <Route path="/" element={<Home />} />
+          <Route path="people" element={<People />} />
+          <Route path="trips" element={<Trips />} />
+          <Route path="trips/:tripId" element={<TripDetail />} />
         </Route>
       </Routes>
     </Router>
