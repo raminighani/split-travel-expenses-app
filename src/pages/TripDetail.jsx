@@ -49,6 +49,15 @@ function TripDetail() {
     }
   }
 
+  function updateTrip(updatedTrip) {
+    const storedTrips = JSON.parse(localStorage.getItem('trips')) || [];
+    const updatedTrips = storedTrips.map((t) =>
+      t.id === updatedTrip.id ? updatedTrip : t,
+    );
+    localStorage.setItem('trips', JSON.stringify(updatedTrips));
+    setTrip(updatedTrip);
+  }
+
   // محاسبه هزینه کل برای هر نفر
   function calculateTotalExpense(updatedTrip) {
     const total = updatedTrip.expenses.reduce(
@@ -88,14 +97,6 @@ function TripDetail() {
   }
 
   // به‌روزرسانی تریپ
-  function updateTrip(updatedTrip) {
-    const storedTrips = JSON.parse(localStorage.getItem('trips')) || [];
-    const updatedTrips = storedTrips.map((t) =>
-      t.id === updatedTrip.id ? updatedTrip : t,
-    );
-    localStorage.setItem('trips', JSON.stringify(updatedTrips));
-    setTrip(updatedTrip);
-  }
 
   // حذف هزینه
   function removeExpense(index) {
