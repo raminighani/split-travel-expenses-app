@@ -70,7 +70,7 @@ function People() {
                 <input
                   value={searchres}
                   onChange={(e) => setSearchRes(e.target.value)}
-                  className="h-[36px] rounded-lg px-7"
+                  className="h-[36px] rounded-lg border-[1px] border-[#ADB5BD] px-7"
                   type="text"
                   placeholder="Search "
                 />
@@ -130,11 +130,11 @@ function People() {
         {/* Add Person Form End -----------------------------------------------------------------------------*/}
 
         {/* People List ------------------------------------------------------------------------------------------ */}
-        <div className="mt-5 w-[1,128px] overflow-hidden rounded-[20px] bg-tablegren px-8 py-5">
+        <div className="mt-5 w-[1,611px] overflow-hidden rounded-[20px] bg-tablegren px-8 py-5">
           <ul className="custom-scrollbar mt-5 h-[420px] list-inside overflow-auto pl-4">
             <li className="h-[60px] pl-6 pr-12">
               <div className="flex h-[60px] items-stretch space-x-6 divide-x-2 text-secondtxt">
-                <span>#</span>
+                <span className="w-[15px]">#</span>
                 <span className="pl-6">full name</span>
               </div>
             </li>
@@ -143,13 +143,12 @@ function People() {
             </p>
             {searchres.length < 3 &&
               people.map((person, index) => (
-                <li
-                  key={index}
-                  className="h-[56px] pl-6 pr-12 even:bg-gray-100"
-                >
+                <li key={index} className="h-[56px] pl-6 pr-12 odd:bg-gray-100">
                   <div className="flex h-[56px] items-center justify-between">
                     <div className="flex h-[56px] items-stretch space-x-6 divide-x-2">
-                      <span className="flex items-center">{index + 1}</span>
+                      <span className="flex w-[15px] items-center">
+                        {index + 1}
+                      </span>
                       <span className="flex items-center px-6">{person}</span>
                     </div>
                     <div className="flex h-[60px] items-center space-x-3 border-l-2 pl-6">
@@ -168,14 +167,15 @@ function People() {
               ))}
             {searchres.length >= 3 &&
               filteredName.map((person, index) => (
-                <li
-                  key={index}
-                  className="h-[56px] pl-6 pr-12 even:bg-gray-100"
-                >
+                <li key={index} className="h-[56px] pl-6 pr-12 odd:bg-gray-100">
                   <div className="flex h-[56px] items-center justify-between">
                     <div className="flex h-[56px] items-stretch space-x-6 divide-x-2">
-                      <span className="flex items-center">{index + 1}</span>
-                      <span className="flex items-center px-6">{person}</span>
+                      <span className="flex w-[15px] items-center">
+                        {index + 1}
+                      </span>
+                      <span className="flex w-[15px] items-center px-6">
+                        {person}
+                      </span>
                     </div>
                     <div className="flex h-[60px] items-center space-x-3 border-l-2 pl-6">
                       <button className="rounded-lg border-2 border-graytxt bg-white px-3 py-2 text-sm text-black hover:bg-red-500 hover:opacity-80">

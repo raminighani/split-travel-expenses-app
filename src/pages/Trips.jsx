@@ -13,13 +13,10 @@ function Trips() {
   const [people, setPeople] = useState([]);
   const [selectedPeople, setSelectedPeople] = useState([]);
   const [isOpen, setIsOpen] = useState(false);
-
   const [searchres, setSearchRes] = useState('');
-
   const filteredTripName = trips.filter((trip) =>
     trip.name.toLowerCase().includes(searchres.toLowerCase()),
   );
-
   const filteredPeopleName = people.filter((person) =>
     person.toLowerCase().includes(searchres.toLowerCase()),
   );
@@ -33,10 +30,22 @@ function Trips() {
   }, []);
 
   function addTrip() {
+    const currentDate = new Date();
+    const month = currentDate.getMonth() + 1; // ماه از 0 شروع می‌شود
+    const day = currentDate.getDate();
+    const year = currentDate.getFullYear();
+    const formattedDate = `${month}/${day}/${year}`;
+
     if (newTrip.trim() && selectedPeople.length >= 0) {
       const updatedTrips = [
         ...trips,
-        { id: Date.now(), name: newTrip, expenses: [], people: selectedPeople },
+        {
+          id: Date.now(),
+          date: formattedDate,
+          name: newTrip,
+          expenses: [],
+          people: selectedPeople,
+        },
       ];
       setTrips(updatedTrips);
       localStorage.setItem('trips', JSON.stringify(updatedTrips));
@@ -94,7 +103,9 @@ function Trips() {
       <div className="mx-6 mt-10 px-7">
         {/* people header */}
         <div>
-          <p className="py-4 text-[32px] font-[500] leading-10">trips list</p>
+          <p className="py-4 text-[32px] font-[500] leading-10">
+            trips list {trips.date}
+          </p>
 
           {/* add new person button && search  */}
           <div className="mt-4 flex items-center justify-between">
@@ -275,7 +286,7 @@ function Trips() {
           <ul className="custom-scrollbar mt-5 h-[90%] list-inside overflow-auto pl-4">
             <li className="h-[60px] pl-6 pr-12">
               <div className="flex h-[60px] items-stretch space-x-6 divide-x-2 text-secondtxt">
-                <span>#</span>
+                <span className="w-[15px]">#</span>
                 <span className="pl-6">trips Name</span>
               </div>
             </li>
@@ -286,11 +297,13 @@ function Trips() {
               trips.map((trip, index) => (
                 <li
                   key={trip.id}
-                  className="h-[56px] pl-6 pr-12 even:bg-gray-100"
+                  className="h-[56px] pl-6 pr-12 odd:bg-gray-100"
                 >
                   <div className="flex h-[56px] items-center justify-between">
                     <div className="flex h-[56px] items-stretch space-x-6 divide-x-2">
-                      <span className="flex items-center">{index + 1}</span>
+                      <span className="flex w-[15px] items-center">
+                        {index + 1}
+                      </span>
                       <span className="flex items-center px-6">
                         <Link
                           to={`/trips/${trip.id}`}
@@ -315,11 +328,13 @@ function Trips() {
               filteredTripName.map((trip, index) => (
                 <li
                   key={trip.id}
-                  className="h-[56px] pl-6 pr-12 even:bg-gray-100"
+                  className="h-[56px] pl-6 pr-12 odd:bg-gray-100"
                 >
                   <div className="flex h-[56px] items-center justify-between">
                     <div className="flex h-[56px] items-stretch space-x-6 divide-x-2">
-                      <span className="flex items-center">{index + 1}</span>
+                      <span className="flex w-[15px] items-center">
+                        {index + 1}
+                      </span>
                       <span className="flex items-center px-6">
                         <Link
                           to={`/trips/${trip.id}`}

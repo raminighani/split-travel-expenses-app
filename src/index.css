@@ -1,13 +1,23 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+* {
+}
 
 @layer utilities {
   ol > li::marker {
     content: counter(list-item) '  '; /* نمایش اعداد با حذف نقطه */
     font-weight: 400;
   }
+  .fontfamily {
+    font-family: 'Poppins', sans-serif;
+  }
 
+  .span span {
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 24px;
+  }
   .popup {
     position: fixed;
     top: 0;
@@ -36,4 +46,14 @@
   .custom-scrollbar::-webkit-scrollbar-thumb:hover {
     background-color: #555;
   }
+
+  .input input,
+  select {
+    margin-right: 4px;
+    height: 38px;
+    border: 1px solid #d0d5dd;
+    background-color: white;
+    border-radius: 8px;
+  }
+ 
 }

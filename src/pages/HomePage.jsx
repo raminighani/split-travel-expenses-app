@@ -5,11 +5,11 @@ import PageNav from '../components/PageNav';
 
 const HomePage = () => {
   return (
-    <main className="flex h-screen">
+    <main className="fontfamily flex h-screen">
       <div className="w-[208px] bg-grn">
         <PageNav />
       </div>
-      <div className="w-[100%] bg-wgrn">
+      <div className="h-[100vh] w-[100%] overflow-y-auto">
         <div className="flex h-[59px] w-[100%] items-center justify-center bg-grn">
           <p className="font[700] text-center text-[20px] text-white">
             expence tracker
